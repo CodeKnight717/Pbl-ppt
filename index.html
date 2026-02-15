@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBL Presentation | 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* TIMER UI - FIXED CONTRAST & LOGIC */
+        #timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; transition: all 0.3s ease; }
+        
+        /* 8-10 Minute Warning: Yellow/Pulse */
+        .timer-warning { 
+            background-color: #fefce8 !important; 
+            border: 3px solid #eab308 !important; 
+            color: #854d0e !important;
+            animation: pulse-warn 1.5s infinite; 
+        }
+        
+        /* 10 Minute Stop: Red High Contrast */
+        .timer-stop { 
+            background-color: #fee2e2 !important; 
+            color: #991b1b !important; 
+            border: 3px solid #ef4444 !important; 
+            animation: none !important;
+        }
+
+        @keyframes pulse-warn {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body onload="startTimer()">
+
+    <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
+        <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
+        <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
+    </div>
+
+    <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
+                <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain" onerror="this.src='https://via.placeholder.com/50?text=MUJ'">
+            </div>
+            <div class="flex flex-col text-left">
+                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
+                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science & Engineering</span>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
+            <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
+            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
+            <a href="#results" class="hover:text-blue-400 transition">Results</a>
+            <a href="#team" class="hover:text-blue-400 transition">Team</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
+        
+        <section class="text-center">
+            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID:2427030685</div>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">PhishGuard</span></h1>
+            <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
+                "PhishGuard: Phishing Simulation and Awareness Platform"
+            </p>
+        </section>
+
+        <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
+            <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
+                <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
+                <p class="text-slate-400 leading-relaxed text-justify">PhishGuard is a platform that simulates real-world phishing attacks to assess user vulnerability and improve cybersecurity awareness through interactive training and analytics.
+</p>
+            </div>
+            <div class="space-y-6">
+                <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
+                    <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review / Market Research</h3>
+                    <p class="text-sm text-slate-500 italic"><li>
+                       Phishing Simulation Exercise in a Large Hospital: A Case Study (2022) 
+
+                    </li>
+                <li>Anti-Phishing Training Does Not Work: A Large-Scale Empirical Study (2010, updated 2024 research) ​
+</li>
+<li>Evaluating Organizational Phishing Awareness Training (2023)  ​</li>
+<li>The Effects of Group Discussion and Role-Playing Training on Self-Efficacy and Vigilance (2024)​</li>
+<li>Phishing Detection Using Machine Learning Based URL Analysis (2021) ​</li></p>
+                </div>
+                <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
+                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap / Innovation</h3>
+                    <p class="text-sm text-slate-500 italic">Lack of Realism: Existing training is theoretical and fails to simulate real-world phishing attacks effectively. ​<br>
+High Costs: Enterprise solutions are expensive and inaccessible for educational institutions and SMBs. ​<br>
+Technical Barriers: Open-source tools require advanced technical expertise, limiting accessibility. ​<br>
+No Immediate Feedback: Current training lacks real-time, contextual feedback to improve learning and behavior. 
+</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology" class="space-y-12">
+            <h2 class="text-4xl font-black text-center uppercase tracking-tight">System <span class="text-blue-500">Methodology</span></h2>
+            
+                <div class="glass p-8 rounded-3xl text-center">
+                    <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model / Architecture</h3>
+                    <div class="text-sm text-slate-500">
+<section>
+  <h2 class="text-left font-bold text-slate-300">Algorithm Overview</h2>
+  <ul class="text-left list-disc list-inside">
+    <li><strong>User Registration:</strong> Users register and are assigned roles (Admin, Educator, Participant).</li>
+    <li><strong>Campaign Creation:</strong> Admin creates phishing campaigns using customizable templates.</li>
+    <li><strong>Email Simulation:</strong> System generates and sends phishing emails to target users.</li>
+    <li><strong>Behavior Tracking:</strong> Tracks opens, clicks, and submissions in real-time.</li>
+    <li><strong>Risk Analysis:</strong> Calculates user risk scores based on interaction patterns.</li>
+    <li><strong>Instant Training:</strong> Provides immediate feedback and awareness guidance.</li>
+    <li><strong>Gamification:</strong> Rewards users with points and badges; adjusts difficulty dynamically.</li>
+    <li><strong>Reporting:</strong> Generates analytics and actionable security insights.</li>
+  </ul>
+</section>
+<br>
+<section>
+  <h2 class="text-left font-bold text-slate-300">System Workflow</h2>
+  <ul class="text-left list-disc list-inside">
+    <li><strong>Frontend:</strong> Interactive dashboard with real-time updates (WebSockets).</li>
+    <li><strong>Backend:</strong> Flask/Django APIs with Celery + Redis for async processing.</li>
+    <li><strong>Database:</strong> MySQL for storage, Redis for caching, Kafka/RabbitMQ for events.</li>
+    <li><strong>Infrastructure:</strong> Dockerized deployment with Kubernetes scaling.</li>
+    <li><strong>Security:</strong> TLS encryption, JWT authentication, CSRF protection, SQL injection prevention.</li>
+  </ul>
+</section>
+</div>
+                </div>
+                <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
+                    <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Live Execution</h3>
+                    <a href="https://github.com/CodeKnight717/PhishGuard.git" target="_blank" class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition shadow-lg shadow-green-900/40">VIEW CODE / DEMO</a>
+                </div>
+        </section>
+
+
+        <section id="team" class="text-center pt-10 border-t border-slate-900">
+            <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+                    <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                    <p class="font-black text-xl text-slate-100">Prof. Dr. UmaShankar Rawat</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Lead</p>
+                    <p class="font-black text-xl text-slate-100">Gautam Giriraj Shukla</p>
+                    <p class="text-[10px] text-slate-500 mt-1">2427030515</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
+        <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
+        <p class="text-slate-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">Department of Computer Science & Engineering • 2026</p>
+    </footer>
+
+    <script>
+        // TIMER LOGIC - REFINED
+        let sec = 0;
+        let timer = null;
+        
+        function startTimer() {
+            const container = document.getElementById('timerContainer');
+            const display = document.getElementById('displayTime');
+            const icon = document.getElementById('timerIcon');
+
+            timer = setInterval(() => {
+                sec++;
+                let m = Math.floor(sec / 60);
+                let s = sec % 60;
+                
+                display.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                
+                // 8-10 Minute Warning
+                if (sec >= 480 && sec < 600) { 
+                    container.classList.add('timer-warning');
+                    icon.classList.replace('fa-hourglass-start', 'fa-hourglass-half');
+                    icon.classList.replace('text-blue-600', 'text-yellow-700');
+                } 
+                // 10 Minutes Stop
+                else if (sec >= 600) { 
+                    clearInterval(timer);
+                    container.classList.remove('timer-warning');
+                    container.classList.add('timer-stop');
+                    display.innerText = "10:00";
+                    icon.classList.replace('fa-hourglass-half', 'fa-hourglass-end');
+                    icon.classList.replace('text-yellow-700', 'text-red-700');
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
